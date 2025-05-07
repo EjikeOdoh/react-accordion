@@ -1,0 +1,42 @@
+.heading {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.heading h1 {
+  font-size: 3rem;
+  font-weight: var(--font-700);
+}
+
+.content {
+  display: grid;
+  gap: 50px;
+}
+
+.item {
+  display: grid;
+  gap: 40px;
+}
+
+.item button {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+
+}
+
+.item button p {
+  text-align: left;
+  font-weight: var(--font-600);
+  font-size: 1.1rem;
+  color: var(--Purple-950);
+}
+
+.item button:hover p {
+  color: var(--Purple-800);
+}
+
+.item > p {
+  color: var(--Purple-600)
+}

@@ -1,0 +1,52 @@
+:root {
+  --White: hsl(0, 100%, 100%);
+  --Purple-100: hsl(275, 100%, 97%);
+  --Purple-600: hsl(292, 16%, 49%);
+  --Purple-800:  hsl(293, 98%, 40%);
+  
+  --Purple-950: hsl(292, 42%, 14%);
+
+  --font-400: 400;
+  --font-600: 600;
+  --font-700: 700;
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+
+body {
+  margin-inline: auto;
+  font-size: 1rem;
+  font-family: "Work Sans", sans-serif;
+  background-image: url(./assets/images/background-pattern-desktop.svg);
+  background-repeat: no-repeat;
+  background-position-y: top;
+  background-position-x: center;
+  background-color: var(--Purple-100);
+  min-height: 100svh;
+  display: grid;
+  place-content: center;
+  max-width: 1440px;
+}
+
+.container {
+  width: 40rem;
+  background-color: var(--White);
+  padding: 40px;
+  border-radius: 10px;
+  display: grid;
+  gap: 60px;
+}
