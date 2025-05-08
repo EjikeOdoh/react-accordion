@@ -33,32 +33,21 @@ let data = [
   }
 ]
 
-console.log(!true)
-console.log(!false)
-
 
 function AccordionItem(props) {
-
-  const [isShown, setIsShown] = useState(props.isOpen)
-
-  function handleClick() {
-    setIsShown((prevValue)=>{
-      return !prevValue
-    })
-  }
 
   return (
     <div className="item">
       <button
-        onClick={handleClick}
+        onClick={() => props.handleClick(props.id)}
       >
         <p>{props.question}</p>
         {
-          isShown ? <BiSolidMinusCircle size={24} color='hsl(292, 42%, 14%)' /> : <FaCirclePlus size={24} color='hsl(293, 98%, 40%)' />
+          props.isOpen ? <BiSolidMinusCircle size={24} color='hsl(292, 42%, 14%)' /> : <FaCirclePlus size={24} color='hsl(293, 98%, 40%)' />
         }
       </button>
       {
-       isShown ? <p>{props.answer}</p> : null
+        props.isOpen ? <p>{props.answer}</p> : null
       }
     </div>
   )
@@ -66,14 +55,29 @@ function AccordionItem(props) {
 
 function App() {
 
-  
+  const [list, setList] = useState(data)
 
-  const items = data.map((x) => {
+  function handleList(id) {
+    setList((prevList) => {
+      return prevList.map(x => {
+        if (x.id === id) {
+          return { ...x, isOpen: !x.isOpen }
+        } else {
+          return {...x, isOpen: false}
+        }
+      })
+    })
+  }
+
+
+  const items = list.map((x) => {
     return <AccordionItem
       key={x.id}
+      id={x.id}
       question={x.question}
       answer={x.answer}
       isOpen={x.isOpen}
+      handleClick={handleList}
     />
   })
 
