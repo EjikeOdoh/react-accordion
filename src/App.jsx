@@ -1,5 +1,6 @@
 import './App.css'
 import Icon from './assets/images/icon-star.svg'
+import { useState } from 'react';
 
 
 import { BiSolidMinusCircle } from "react-icons/bi";
@@ -32,11 +33,18 @@ let data = [
   }
 ]
 
+console.log(!true)
+console.log(!false)
+
 
 function AccordionItem(props) {
 
+  const [isShown, setIsShown] = useState(props.isOpen)
+
   function handleClick() {
-    console.log('Clicked')
+    setIsShown((prevValue)=>{
+      return !prevValue
+    })
   }
 
   return (
@@ -46,11 +54,11 @@ function AccordionItem(props) {
       >
         <p>{props.question}</p>
         {
-          props.isOpen ? <BiSolidMinusCircle size={24} color='hsl(292, 42%, 14%)' /> : <FaCirclePlus size={24} color='hsl(293, 98%, 40%)' />
+          isShown ? <BiSolidMinusCircle size={24} color='hsl(292, 42%, 14%)' /> : <FaCirclePlus size={24} color='hsl(293, 98%, 40%)' />
         }
       </button>
       {
-        props.isOpen ? <p>{props.answer}</p> : null
+       isShown ? <p>{props.answer}</p> : null
       }
     </div>
   )
@@ -58,12 +66,7 @@ function AccordionItem(props) {
 
 function App() {
 
-  let count = 0
-
-  function increaseCount() {
-    count= count + 1;
-    console.log(count)
-  }
+  
 
   const items = data.map((x) => {
     return <AccordionItem
@@ -80,8 +83,6 @@ function App() {
         <img src={Icon} alt="Icon star" />
         <h1>FAQs</h1>
       </div>
-
-<button onClick={increaseCount}>{count}</button>
 
       <div className="content">
         {items}
